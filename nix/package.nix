@@ -1,11 +1,11 @@
 { pkgs }:
 pkgs.buildNpmPackage {
-  pname = "xnode-nextjs-template";
+  pname = "secure-hello-world";
   version = "1.0.0";
   src = ../nextjs-app;
 
   # FIXME: this needs to be updated every time the package-lock.json changes
-  npmDepsHash = "sha256-o34A/bLD4ulGif4K9Qltefo5/U9U4pCDemGhLvIlyHY=";
+  npmDepsHash = "sha256-IaUQ55clVyy1tSNXRIf98h/LvH/2BVlN4NA7R03uRBY=";
 
   postBuild = ''
     # Add a shebang to the server js file, then patch the shebang to use a
@@ -32,7 +32,7 @@ pkgs.buildNpmPackage {
     chmod +x $out/share/homepage/server.js
 
     # we set a default port to support "nix run ..."
-    makeWrapper $out/share/homepage/server.js $out/bin/xnode-nextjs-template \
+    makeWrapper $out/share/homepage/server.js $out/bin/secure-hello-world \
       --set-default PORT 3000 \
       --set-default HOSTNAME 0.0.0.0
 
@@ -42,6 +42,6 @@ pkgs.buildNpmPackage {
   doDist = false;
 
   meta = {
-    mainProgram = "xnode-nextjs-template";
+    mainProgram = "secure-hello-world";
   };
 }
